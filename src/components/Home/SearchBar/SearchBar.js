@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     borderRadius: '30px',
     height: '40px',
-    width: '500px',
+    width: '70%',
   },
 }));
 
