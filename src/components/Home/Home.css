@@ -1,6 +1,17 @@
+.home-container {
+  height: 100%;
+}
+
 .home {
   /* display: flex;
   flex-direction: column-reverse;
   flex-wrap: wrap; */
-  height: 600px;
+  height: 100vh;
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
 }

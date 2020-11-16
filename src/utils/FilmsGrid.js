@@ -4,8 +4,6 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import { Link } from 'react-router-dom';
 
-//import tileData from './tileData';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -29,31 +27,31 @@ const useStyles = makeStyles((theme) => ({
     width: 200,
     textAlign: 'center',
   },
+  link: {
+    height: 400,
+  },
 }));
-
-/* 
-- le state des films fetch from API
-
-
-
-*/
 
 export default function DisplayCollection(props) {
   const classes = useStyles();
 
-  const { data } = props;
+  const { data, media } = props;
 
   return (
     <>
       <div className={classes.root}>
         <GridList
           className={classes.gridList}
-          cellHeight={400}
+          cellHeight={350}
           spacing={10}
           cols={2}
         >
           {data.map((film) => (
-            <Link to={`/film/${film.id}`} key={film.id}>
+            <Link
+              to={`/${media}/${film.id}`}
+              key={film.id}
+              style={{ height: '340px' }}
+            >
               <GridListTile>
                 <img
                   className={classes.img}
