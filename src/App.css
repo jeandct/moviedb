@@ -1,14 +1,19 @@
-html,
-body,
-#root,
-.App {
-  height: 100%;
-}
-
 main {
-  height: 100%;
   width: 100%;
   flex-grow: 3;
   background: linear-gradient(120deg, #233559, 60%, #732065, #a61473);
+  color: white;
+}
+
+.App {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  flex-shrink: 0;
+  height: 80px;
+  background-color: #233559;
   color: white;
 }

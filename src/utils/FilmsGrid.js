@@ -59,7 +59,7 @@ export default function DisplayCollection(props) {
                   alt={film.title}
                 />
                 <figcaption className={classes.figcaption}>
-                  {film.title}
+                  {film.title || film.name}
                 </figcaption>
               </GridListTile>
             </Link>

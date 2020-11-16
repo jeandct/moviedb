@@ -1,17 +1,10 @@
 .home-container {
-  height: 100%;
+  margin-bottom: 50px;
 }
 
-.home {
-  /* display: flex;
+/* .home {
+  display: flex;
   flex-direction: column-reverse;
-  flex-wrap: wrap; */
-  height: 100vh;
-}
-
-html,
-body,
-#root,
-.App {
-  height: 100%;
-}
+  flex-wrap: wrap; 
+  height: 80vh;
+}  */
