@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SearchBar from './SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import Trendings from '../Trendings/Trendings';
 import './Home.css';
 
