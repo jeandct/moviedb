@@ -45,12 +45,12 @@ export default function Trendings(props) {
         <GridList
           className={classes.gridList}
           cellHeight={400}
-          spacing={1}
-          cols={6.5}
+          spacing={10}
+          cols={2}
         >
           {trendingFilms.map((film) => (
-            <Link to={`/film/${film.id}`}>
-              <GridListTile key={film.id}>
+            <Link to={`/film/${film.id}`} key={film.id}>
+              <GridListTile>
                 <img
                   className={classes.img}
                   src={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}

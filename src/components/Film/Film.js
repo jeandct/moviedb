@@ -27,16 +27,18 @@ const Film = (props) => {
         className='film-intro-container'
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className='film-intro'>
-          <img
-            src={`https://image.tmdb.org/t/p/w300/${filmData.poster_path}`}
-          ></img>
-          <section className='film-section'>
-            <h2>{filmData.title}</h2>
-            <h4>{`${filmData.vote_average}/10`}</h4>
-            <h3>Synposys</h3>
-            <p>{filmData.overview}</p>
-          </section>
+        <div className='background'>
+          <div className='film-intro'>
+            <img
+              src={`https://image.tmdb.org/t/p/w300/${filmData.poster_path}`}
+            ></img>
+            <section className='film-section'>
+              <h2>{filmData.title}</h2>
+              <h4>{`${filmData.vote_average}/10`}</h4>
+              <h3>Synposys</h3>
+              <p>{filmData.overview}</p>
+            </section>
+          </div>
         </div>
       </div>
     </div>
