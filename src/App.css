@@ -1,14 +1,14 @@
 main {
-  width: 100%;
   flex-grow: 3;
   background: linear-gradient(120deg, #233559, 60%, #732065, #a61473);
   color: white;
+  padding: 20px 0px 20px 20px;
 }
 
 .App {
-  /* height: 100vh; */
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 footer {

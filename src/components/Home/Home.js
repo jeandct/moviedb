@@ -13,8 +13,8 @@ const Home = () => {
   const [trendingTVShows, setTrendingTVShows] = useState([]);
 
   const apiKey = `${process.env.REACT_APP_API_KEY}`;
-  const trendingFilmsURL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`;
-  const trendingTVShowsURL = `https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}`;
+  const trendingFilmsURL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}&language=fr`;
+  const trendingTVShowsURL = `https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}&language=fr`;
 
   useEffect(() => {
     axios
@@ -26,7 +26,7 @@ const Home = () => {
     axios
       .get(trendingTVShowsURL)
       .then((res) => setTrendingTVShows(res.data.results));
-  });
+  }, []);
 
   return (
     <div className='home-container'>

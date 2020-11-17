@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   img: {
     width: 200,
     height: 'auto',
+    minHeight: 300,
     borderRadius: 10,
     boxShadow: '3px 3px 5px #000',
   },
