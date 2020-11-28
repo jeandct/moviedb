@@ -1,6 +1,10 @@
-.home {
-  /* display: flex;
-  flex-direction: column-reverse;
-  flex-wrap: wrap; */
-  height: 600px;
+.home-container {
+  margin-bottom: 50px;
 }
+
+/* .home {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap; 
+  height: 80vh;
+}  */

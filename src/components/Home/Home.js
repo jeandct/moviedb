@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchBar from '../SearchBar/SearchBar';
-import Trendings from '../Trendings/Trendings';
+import TrendingMovies from '../Trendings/TrendingMovies';
+import TrendingTVShows from '../Trendings/TrendingTVShows';
 import './Home.css';
 
 const Home = () => {
@@ -9,14 +10,22 @@ const Home = () => {
   const [inputValue, setInputValue] = useState('');
 
   const [trendingFilms, setTrendingFilms] = useState([]);
+  const [trendingTVShows, setTrendingTVShows] = useState([]);
 
   const apiKey = `${process.env.REACT_APP_API_KEY}`;
-  const trendingFilmsURL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`;
+  const trendingFilmsURL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}&language=fr`;
+  const trendingTVShowsURL = `https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}&language=fr`;
 
   useEffect(() => {
     axios
       .get(trendingFilmsURL)
       .then((res) => setTrendingFilms(res.data.results));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(trendingTVShowsURL)
+      .then((res) => setTrendingTVShows(res.data.results));
   }, []);
 
   return (
@@ -29,7 +38,8 @@ const Home = () => {
           inputValue={inputValue}
         />
 
-        <Trendings trendingFilms={trendingFilms} />
+        <TrendingMovies data={trendingFilms} />
+        <TrendingTVShows data={trendingTVShows} />
       </div>
     </div>
   );

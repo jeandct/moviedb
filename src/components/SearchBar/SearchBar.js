@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -18,6 +20,40 @@ export default function SearchBar(props) {
   const classes = useStyles();
   const { inputValue, setInputValue, selectedFilm, setSelectedFilm } = props;
 
+  const [results, setResults] = useState([]);
+  const apiKey = `${process.env.REACT_APP_API_KEY}`;
+
+  useEffect(() => {
+    let query = selectedFilm ? selectedFilm : inputValue;
+    let queryAll = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${query}&language=fr`;
+    inputValue.length > 0 &&
+      axios.get(queryAll).then((res) => setResults(res.data.results));
+  }, [inputValue, apiKey]);
+
+  useEffect(() => {
+    // console.log(
+    //   results.map(
+    //     (option) => option.title || option.original_name || option.name
+    //   )
+    // );
+    // console.log(results.map((option) => option));
+    console.log(results.length > 0 ? results[0].media_type : '/');
+  }, [results]);
+
+  const SearchBarLink = () => {
+    return results.length > 0 ? (
+      <Link to={`/${results[0].media_type}/${results[0].id}`}>
+        {' '}
+        <SearchIcon style={{ color: 'black' }} />
+      </Link>
+    ) : (
+      <Link to={`/`}>
+        {' '}
+        <SearchIcon style={{ color: 'black' }} />
+      </Link>
+    );
+  };
+
   return (
     <div>
       <Autocomplete
@@ -27,7 +63,12 @@ export default function SearchBar(props) {
         className={classes.root}
         onChange={(event, value) => setSelectedFilm(value)}
         onInputChange={(event, inputValue) => setInputValue(inputValue)}
-        options={top100Films.map((option) => option.title)}
+        // options={results.map((option) => {
+        //   return option.title || option.original_name;
+        // })}
+        options={results.map(
+          (option) => option.title || option.original_name || option.name
+        )}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -37,7 +78,7 @@ export default function SearchBar(props) {
               ...params.InputProps,
               type: 'search',
               className: classes.input,
-              endAdornment: <SearchIcon />,
+              endAdornment: <SearchBarLink />,
             }}
           />
         )}

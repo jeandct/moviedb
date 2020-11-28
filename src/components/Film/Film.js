@@ -9,13 +9,13 @@ const Film = (props) => {
 
   useEffect(() => {
     const apiKey = `${process.env.REACT_APP_API_KEY}`;
-    const filmDataURL = `https://api.themoviedb.org/3/movie/${params.id}?api_key=${apiKey}&language=fr&append_to_response=videos,images`;
+    const filmDataURL = `https://api.themoviedb.org/3/${params.media}/${params.id}?api_key=${apiKey}&language=fr&append_to_response=videos,images`;
     axios
       .get(filmDataURL)
       .then((res) => res.data)
       .then((res) => setFilmData(res));
 
-    const filmCreditsURL = `https://api.themoviedb.org/3/movie/${params.id}/credits?api_key=${apiKey}&language=fr`;
+    const filmCreditsURL = `https://api.themoviedb.org/3/${params.media}/${params.id}/credits?api_key=${apiKey}&language=fr`;
     axios.get(filmCreditsURL).then((res) => setFilmCredits(res.data));
   }, []);
 
@@ -33,7 +33,7 @@ const Film = (props) => {
               src={`https://image.tmdb.org/t/p/w300/${filmData.poster_path}`}
             ></img>
             <section className='film-section'>
-              <h2>{filmData.title}</h2>
+              <h2>{filmData.title || filmData.name}</h2>
               <h4>{`${filmData.vote_average}/10`}</h4>
               <h3>Synposys</h3>
               <p>{filmData.overview}</p>
